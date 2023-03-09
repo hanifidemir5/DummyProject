@@ -7,6 +7,11 @@ from datetime import datetime
 
 from demoapp.forms import LoginForm 
 
+def about(request):
+    about_content = {'about' : "hebele hübele nereye geldik len dümbele"}
+    return render(request,"about.html ",about_content)
+
+
 def demo_form_view(request):
     form = LoginForm()
     if request.method == 'POST':
