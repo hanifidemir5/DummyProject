@@ -1,0 +1,8 @@
+<h1>List of Dishes</h1> 
+
+<ul> 
+    {% for item in dishes %} 
+    <li>{{ item.dish }}</li> 
+    <li>{{ item.components }}</li> 
+    {% endfor %} 
+</ul> 

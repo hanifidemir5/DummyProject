@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Menu
 # Create your views here.
 from django.http import HttpResponse
 
@@ -21,7 +21,7 @@ def demo_form_view(request):
     context = {"form": form }
     return render(request,"home.html",context)
 
-def home(request):
+def home_demo(request):
     path = request.path
     scheme = request.scheme
     method = request.method
@@ -67,3 +67,27 @@ def menuitems(request, dish):
     description = items[dish]
 
     return HttpResponse('<h2> {dish} <h2>' + description)
+
+def menu(request):
+
+    items = { 'dishes':[
+        {'dish' : "pasta",'components' : "pasta hübele"},
+        {'dish' : "pizza",'components' : "pizza andasdadsa sos"},
+        {'dish' : "soup", 'components' : "soup and extras"},
+    ]}
+
+    return render(request, "menu.html", items)
+
+def menu_by_id(request):
+    newmenu = Menu.objects.all()
+    newmenu_dict = {'menu' : newmenu}
+    return render(request, 'menu_cards.html', newmenu_dict)
+
+def home(request): 
+    return render(request, "home.html", {}) 
+
+def register(request): 
+    return render(request, "register.html", {}) 
+
+def login(request): 
+    return render(request, "login.html", {}) 
